@@ -1,0 +1,22 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+    <div class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a style="color: rgb(180, 176, 176);" class="nav-link disabled">{{ user.username }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" style="color: white;" (click)="logout()">Logout</a>
+        </li>
+    </div>
+</nav>
+
+<!-- main app container -->
+<div class="app-container" [ngClass]="{ 'bg-light': user }">
+    <alert></alert>
+    <router-outlet></router-outlet>
+</div>
+
+<!-- credits -->
+<div class="text-center mt-4">
+    <footer>&copy; Copyright 2021 ProVR</footer>
+</div>
