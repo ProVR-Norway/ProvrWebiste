@@ -12,62 +12,62 @@ threadsafe: yes
 
 handlers:
   - url: /(.+\.js)
-    static_files: dist/ProvrWebsite/src/\1
-    upload: dist/ProvrWebsite/src/(.+\.js)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.js)
     secure: always
     redirect_http_response_code: 301
 
   - url: /(.+\.css)
-    static_files: dist/ProvrWebsite/src/\1
-    upload: dist/ProvrWebsite/src/(.+\.css)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.css)
     secure: always
     redirect_http_response_code: 301
 
   - url: /(.+\.png)
-    static_files: dist/ProvrWebsite/src/\1
-    upload: dist/ProvrWebsite/src/(.+\.png)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.png)
     secure: always
     redirect_http_response_code: 301
 
   - url: /(.+\.jpg)
-    static_files: dist/ProvrWebsite/src/\1
-    upload: dist/ProvrWebsite/src/(.+\.jpg)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.jpg)
     secure: always
     redirect_http_response_code: 301
 
   - url: /(.+\.gif)
-    static_files: dist/ProvrWebsite/src/\1
-    upload: dist/ProvrWebsite/src/(.+\.gif)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.gif)
     secure: always
     redirect_http_response_code: 301
 
   - url: /(.+\.svg)
     static_files: dist/ProvrWebsite/src/\1
-    upload: dist/ProvrWebsite/src/(.+\.svg)
+    upload: dist/ProvrWebsite/(.+\.svg)
     secure: always
     redirect_http_response_code: 301
 
   - url: /favicon.ico
-    static_files: dist/ProvrWebsite/src/favicon.ico
-    upload: dist/ProvrWebsite/src/favicon.ico
+    static_files: dist/ProvrWebsite/favicon.ico
+    upload: dist/ProvrWebsite/favicon.ico
     secure: always
     redirect_http_response_code: 301
 
   - url: /(.+\.json)
-    static_files: dist/ProvrWebsite/src/\1
-    upload: dist/ProvrWebsite/src/(.+\.json)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.json)
     secure: always
     redirect_http_response_code: 301
 
   - url: /(.+)
-    static_files: dist/ProvrWebsite/src/index.html
-    upload: dist/ProvrWebsite/src/index.html
+    static_files: dist/ProvrWebsite/index.html
+    upload: dist/ProvrWebsite/index.html
     secure: always
     redirect_http_response_code: 301
 
   - url: /
-    static_files: dist/ProvrWebsite/src/index.html
-    upload: dist/ProvrWebsite/src/index.html
+    static_files: dist/ProvrWebsite/index.html
+    upload: dist/ProvrWebsite/index.html
     secure: always
     redirect_http_response_code: 301
 
