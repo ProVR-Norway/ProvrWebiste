@@ -12,55 +12,15 @@ default_expiration: 60s
 
 handlers:
 
-# To enhance security, all http requests are redirected to their equivalent https addresses (secure: always).
-
-# Assets are retrieved directly from their parent folder.
-- url: /assets
-  static_dir: dist/ProvrWebsite/assets
-  secure: always
-
-# Static files located in the root folder are retrieved directly from there, but their suffixes need to be
-# mapped individually in order to avoid them from being hit by the most general (catch-all) rule.
-- url: /(.*\.css)
-  static_files: dist/ProvrWebsite/\1
-  upload: dist/ProvrWebsite/(.*\.css)
-  secure: always
-
-- url: /(.*\.html)
-  static_files: dist/ProvrWebsite/\1
-  upload: dist/ProvrWebsite/(.*\.html)
-  secure: always
-
-- url: /(.*\.ico)
-  static_files: dist/ProvrWebsite/\1
-  upload: dist/ProvrWebsite/(.*\.ico)
-  secure: always
-
-- url: /(.*\.js)
-  static_files: dist/ProvrWebsite/\1
-  upload: dist/ProvrWebsite/(.*\.js)
-  secure: always
-
-- url: /(.*\.txt)
-  static_files: dist/ProvrWebsite/\1
-  upload: dist/ProvrWebsite/(.*\.txt)
-  secure: always
-
-# Site root.
-- url: /
-  static_files: dist/ProvrWebsite/index.html
-  upload: dist/ProvrWebsite/index.html
-  secure: always
-
-# Catch-all rule, responsible from handling Angular application routes (deeplinks).
-- url: /.*
-  static_files: dist/ProvrWebsite/index.html
-  upload: dist/ProvrWebsite/index.html
-  secure: always
+  - url: /
+    static_files: dist/ProvrWebsite/index.html
+    upload: dist/ProvrWebsite/index.html
+  - url: /
+    static_dir: dist/ProvrWebsite
 
 skip_files:
   - e2e/
-  - ^(?!dist)
+  # - ^(?!dist)
   - node_modules/
   - src/
   - ^(.*/)?\..*$
