@@ -23,9 +23,9 @@ handlers:
     secure: always
     redirect_http_response_code: 301
 
-  - url: /(.+\.png)
+  - url: /assets/(.+\.png)
     static_files: dist/\1
-    upload: dist/(.+\.png)
+    upload: dist/assets/(.+\.png)
     secure: always
     redirect_http_response_code: 301
 
@@ -38,6 +38,24 @@ handlers:
   - url: /(.+\.gif)
     static_files: dist/\1
     upload: dist/(.+\.gif)
+    secure: always
+    redirect_http_response_code: 301
+    
+    - url: /(.+\.tff)
+    static_files: dist/\1
+    upload: dist/(.+\.tff)
+    secure: always
+    redirect_http_response_code: 301
+    
+    - url: /(.+\.eot)
+    static_files: dist/\1
+    upload: dist/(.+\.eot)
+    secure: always
+    redirect_http_response_code: 301
+    
+    - url: /(.+\.woff2)
+    static_files: dist/\1
+    upload: dist/(.+\.woff2)
     secure: always
     redirect_http_response_code: 301
 
