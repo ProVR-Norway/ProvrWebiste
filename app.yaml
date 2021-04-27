@@ -8,23 +8,74 @@ threadsafe: yes
 # Google App Engine's cache default expiration time is 10 minutes. It's suitable for most Production
 # scenarios, but a shorter TTL may be desired for Development and QA, as it allows us to see a fresh
 # code in action just a minute after the deployment.
-default_expiration: 60s
+# default_expiration: 60s
 
 handlers:
+  - url: /(.+\.js)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.js)
+    secure: always
+    redirect_http_response_code: 301
 
-  - url: /.*
+  - url: /(.+\.css)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.css)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.png)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.png)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.jpg)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.jpg)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.gif)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.gif)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.svg)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.svg)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /favicon.ico
+    static_files: dist/ProvrWebsite/favicon.ico
+    upload: dist/ProvrWebsite/favicon.ico
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.json)
+    static_files: dist/ProvrWebsite/\1
+    upload: dist/ProvrWebsite/(.+\.json)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+)
     static_files: dist/ProvrWebsite/index.html
     upload: dist/ProvrWebsite/index.html
+    secure: always
+    redirect_http_response_code: 301
+
   - url: /
-    static_dir: dist/ProvrWebsite
+    static_files: dist/ProvrWebsite/index.html
+    upload: dist/ProvrWebsite/index.html
+    secure: always
+    redirect_http_response_code: 301
 
 skip_files:
   - e2e/
-  # - ^(?!dist)
   - node_modules/
   - src/
   - ^(.*/)?\..*$
-  - ^(.*/)?.*\.json$
   - ^(.*/)?.*\.md$
   - ^(.*/)?.*\.yaml$
   - ^LICENSE
