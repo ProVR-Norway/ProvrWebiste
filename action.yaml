@@ -28,7 +28,7 @@ inputs:
 
 runs:
   using: 'node12'
-  main: 'src/index.html'
+  main: 'index.js'
 
 branding:
   icon: 'award'
