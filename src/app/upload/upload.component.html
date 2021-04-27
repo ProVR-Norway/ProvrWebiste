@@ -30,15 +30,6 @@
                  class="well my-drop-zone py-5">
                 <span [ngClass]="{'nv-file-over-text': hasBaseDropZoneOver}" style="display: inline-block; width: 100%; text-align: center;">Drop Zone</span>
             </div>
-        <!--
-            <div ng2FileDrop
-                 [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
-                 (fileOver)="fileOverAnother($event)"
-                 [uploader]="uploader"
-                 class="well my-drop-zone">
-                Another drop zone
-            </div>
-        -->
 
             <label class="my-3" for="multiple"></label>
             <input name="multiple" type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
@@ -120,16 +111,4 @@
 
     <br><br>
 
-    <div class="row">
-        <div class="col-md-12">
-            <!--
-            <div class="panel panel-default">
-                <div class="panel-heading">Response</div>
-                <div class="panel-body">
-                  {{ response }}
-                </div>
-            </div>
-            -->
-        </div>
-    </div>
 </div>

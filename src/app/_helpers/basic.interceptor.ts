@@ -10,7 +10,7 @@ export class BasicInterceptor implements HttpInterceptor {
     constructor(private accountService: AccountService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // add auth header with the basic token if user is logged in and request is to the api url
+        // add auth header with the basic token if user is logged in and request is to the api url with path '/cadmodels/'
         const user = this.accountService.userValue;
         const isLoggedIn = user && user.token;
         const isApiUrl = request.url.startsWith(environment.apiUrl);

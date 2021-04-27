@@ -1,24 +1,7 @@
-﻿/*
-import { Component } from '@angular/core';
-
-@Component({ templateUrl: 'upload.component.html' })
-export class UploadComponent {
-    user: User;
-
-    constructor(private accountService: AccountService) {
-        this.user = this.accountService.userValue;
-    }
-}
-*/
-
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
-import { SignedURL, User } from '@app/_models';
-import { AccountService } from '@app/_services';
-import { SignedURLService } from '@app/_services';
-
-// const URL = '/api/';
-const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+import { User } from '@app/_models';
+import { AccountService, AlertService, SignedURLService } from '@app/_services';
 
 @Component({
   selector: 'upload.component',
@@ -39,7 +22,11 @@ export class UploadComponent {
   // Variable used to hide/show button for uploading files
   public isButtonVisible = true;
 
-  constructor (private accountService: AccountService, private signedurlService: SignedURLService){
+  constructor (
+    private accountService: AccountService, 
+    private signedurlService: SignedURLService,
+    private alertService: AlertService
+  ){
     this.user = this.accountService.userValue;
     this.uploader = new FileUploader({
       //url: URL,
@@ -60,23 +47,10 @@ export class UploadComponent {
       }
     });
 
-    /*
-    this.uploader.onBeforeUploadItem = (fileItem: any) => {
-      // logic of connecting url with the file
-      const fileName = fileItem.file.name.replace(/\.[^/.]+$/, "");
-      this.signedurlService.getSignedURL(this.user.username, fileName)
-        .subscribe(
-          data => {
-            console.log('SignedURL: ' + data.signedURL);
-            fileItem.url = data.signedURL;
-            return {fileItem};
-        }
-      );
-    };
-    */
-
     this.uploader.onAfterAddingFile = (fileItem) => { 
       if (fileItem.file.name.includes('.gltf') || fileItem.file.name.includes('.glb')) {
+        // Remove error message
+        this.alertService.clear();
         // The upload and uploadAll buttons are hidden upon generating signed URLs
         // This is to avoid upload error whenthe buttons are clicked to early
         this.isButtonVisible = false;
@@ -94,7 +68,10 @@ export class UploadComponent {
           }
         );
       } else {
+        // Remove the file item from the queue so that it cannot be uploaded
         fileItem.remove();
+        // Display an error message on the screen
+        this.alertService.error('Only .gltf or .glb files can be uploaded!');
         return;
       }
     };
@@ -106,23 +83,6 @@ export class UploadComponent {
 
     this.uploader.response.subscribe( res => this.response = res );
   }
-
-  /*
-  public generateSignedURL(item) {
-    // Remove file ending (.gltf and .glb)
-    const fileName = item.file.name.replace(/\.[^/.]+$/, "");
-    console.log(fileName);
-    console.log(this.user.username);
-    this.signedurlService.getSignedURL(this.user.username, fileName)
-      .subscribe(
-        data => {
-          console.log('SignedURL: ' + data.signedURL);
-          this.uploader.setOptions({ url: data.signedURL });
-          item.upload()
-      }
-    );
-  }
-  */
 
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
