@@ -12,7 +12,7 @@ default_expiration: 60s
 
 handlers:
 
-  - url: /
+  - url: /.*
     static_files: dist/ProvrWebsite/index.html
     upload: dist/ProvrWebsite/index.html
   - url: /
