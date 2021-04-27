@@ -6,6 +6,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: ProVR-Norway/ProvrWebsite@master
       - name: Initialize Google Cloud SDK
         uses: zxyle/publish-gae-action@master
         with:
