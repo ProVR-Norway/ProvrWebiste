@@ -1,5 +1,5 @@
-# Code written by Xiang Zheng
-# Orginal repository: zxyle/publish-gae-action
+// Code written by Xiang Zheng
+// Orginal repository: zxyle/publish-gae-action
 
 const fs = require('fs');
 const core = require('@actions/core');
