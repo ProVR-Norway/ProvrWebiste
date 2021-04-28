@@ -2,6 +2,8 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+// Md5 hashing
+import { Md5 } from 'ts-md5/dist/md5';
 
 import { AccountService, AlertService } from '@app/_services';
 
@@ -44,8 +46,10 @@ export class LoginComponent implements OnInit {
             return;
         }
 
+        const hashedPassword = Md5.hashStr(this.f.password.value);
+
         this.loading = true;
-        this.accountService.login(this.f.username.value, this.f.password.value)
+        this.accountService.login(this.f.username.value, hashedPassword)
             .pipe(first())
             .subscribe(
                 data => {

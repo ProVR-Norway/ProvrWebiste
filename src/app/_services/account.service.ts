@@ -31,7 +31,6 @@ export class AccountService {
                     username: username,
                     token: response.token
                 };
-                console.log(JSON.stringify(userDetails));
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(userDetails));
                 this.userSubject.next(userDetails);

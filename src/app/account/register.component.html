@@ -19,11 +19,11 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <!-- Important! Only strong passwords are allowed -->
-                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && isNotStrongEnough }" />
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && passIsNotStrong }" />
                 <password-strength-bar [passwordToCheck]="f.password.value" [barLabel]="barLabel" (passwordStrength)="setPassStrength($event)"></password-strength-bar>
-                <div *ngIf="submitted && isNotStrongEnough" class="invalid-feedback">
+                <div *ngIf="submitted && passIsNotStrong" class="invalid-feedback">
                     <!--<div *ngIf="f.password.errors.required">Password is required</div>-->
-                    <div *ngIf="isNotStrongEnough">The password is not strong enough!</div>
+                    <div *ngIf="passIsNotStrong">The password must contain both upper and lower case letters, numbers, special characters like *, @, and ?, and be atleast 8 characters long. </div>
                 </div>
             </div>
             <div class="form-group">

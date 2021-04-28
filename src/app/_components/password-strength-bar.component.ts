@@ -9,9 +9,9 @@ export class PasswordStrengthBarComponent implements OnChanges {
   
   @Input() passwordToCheck: string;  
   @Input() barLabel: string;
-  @Output() passwordStrength = new EventEmitter<boolean>();
+  @Output() passwordStrength = new EventEmitter<boolean>(true); // Set to 'true' so that it is asynchronous
   
-  public isNotStrongEnough: boolean = true;
+  private isNotStrongEnough: boolean = true;
   
   bar0: string;  
   bar1: string;  
@@ -36,7 +36,7 @@ export class PasswordStrengthBarComponent implements OnChanges {
       idx = 2;
       this.isNotStrongEnough = false;
     // If the password fulfills some variations and is atleast 6 characters long we have a moderate password
-    } else if (variations.digits && variations.lower && variations.upper && (passLength >= 6)) {  
+    } else if ((variations.digits || variations.specialChar) && (variations.lower || variations.specialChar) && (variations.upper || variations.specialChar) && (passLength >= 6)) {  
       idx = 1;
     }
     return {  

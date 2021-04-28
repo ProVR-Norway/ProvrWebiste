@@ -61,7 +61,6 @@ export class UploadComponent {
         this.signedurlService.getSignedURL(this.user.username, fileName)
           .subscribe(
             data => {
-              console.log('SignedURL: ' + data.signedURL);
               fileItem.url = data.signedURL;
               this.isButtonVisible = true;
               return {fileItem};
