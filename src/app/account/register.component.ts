@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
         this.alertService.clear();
 
         // stop here if form is invalid
-        if (this.form.invalid && this.passIsNotStrong) {
+        if (this.form.invalid || this.passIsNotStrong) {
             return;
         }
 
