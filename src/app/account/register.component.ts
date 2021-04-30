@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
         }
 
         const hashedPassword = Md5.hashStr(this.form.value.password);
-        //this.form.value.password = hashedPassword;
+        this.form.value.password = hashedPassword;
 
         this.loading = true;
         this.accountService.register(this.form.value)

@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         const hashedPassword = Md5.hashStr(this.f.password.value);
 
         this.loading = true;
-        this.accountService.login(this.f.username.value, hashedPassword)
+        this.accountService.login(this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {
