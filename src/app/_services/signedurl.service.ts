@@ -14,10 +14,9 @@ export class SignedURLService {
     ){}
 
     getSignedURL(username, modelname) {
-        return this.http.put<SignedURL>(`${environment.apiUrl}/cadmodels/signedurl`, { username, modelname })
+        return this.http.get<SignedURL>(`${environment.apiUrl}/cadmodels/signedurl?` + 'username=' + encodeURI(username) + '&modelname=' + encodeURI(modelname) + '&action=write')
             .pipe(map(data => {
                 return data;
             }));
     }
-    
 }
