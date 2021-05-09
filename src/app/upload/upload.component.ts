@@ -51,7 +51,6 @@ export class UploadComponent {
       const fileName = fileItem.file.name;
       if (fileName.includes('.gltf') || fileName.includes('.glb')) {
         // Remove error message
-        console.log(fileName);
         this.alertService.clear();
         // The upload and uploadAll buttons are hidden upon generating signed URLs
         // This is to avoid upload error whenthe buttons are clicked to early
