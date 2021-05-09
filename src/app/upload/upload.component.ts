@@ -48,8 +48,10 @@ export class UploadComponent {
     });
 
     this.uploader.onAfterAddingFile = (fileItem) => { 
-      if (fileItem.file.name.includes('.gltf') || fileItem.file.name.includes('.glb')) {
+      const fileName = fileItem.file.name;
+      if (fileName.includes('.gltf') || fileName.includes('.glb')) {
         // Remove error message
+        console.log(fileName);
         this.alertService.clear();
         // The upload and uploadAll buttons are hidden upon generating signed URLs
         // This is to avoid upload error whenthe buttons are clicked to early
@@ -57,7 +59,6 @@ export class UploadComponent {
         // To avoid CORS preflight error: "credentials flag is true but access-control-allow-credentials is not true"
         fileItem.withCredentials = false; 
         // Generate signed URL to be used for the models
-        const fileName = fileItem.file.name.replace(/\.[^/.]+$/, "");
         this.signedurlService.getSignedURL(this.user.username, fileName)
           .subscribe(
             data => {
