@@ -46,7 +46,7 @@ export class PasswordStrengthBarComponent implements OnChanges {
   }  
   
   ngOnChanges(changes: {[propName: string]: SimpleChange}): void {  
-      var password = changes['passwordToCheck'].currentValue;  
+      var password = changes['passwordToCheck'].currentValue;
       this.setBarColors(5, '#DDD');  
       if (password) {
           let c = this.getColor(password);  

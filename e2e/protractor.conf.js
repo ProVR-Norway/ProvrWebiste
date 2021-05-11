@@ -2,31 +2,44 @@
 // Protractor configuration file, see link for more information
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
-const { SpecReporter } = require('jasmine-spec-reporter');
-
 /**
  * @type { import("protractor").Config }
  */
+
 exports.config = {
-  allScriptsTimeout: 11000,
+  // set to "custom" instead of cucumber.
+  framework: 'custom',
+
+  // path relative to the current config file
+  frameworkPath: require.resolve('protractor-cucumber-framework'),
+
+  //seleniumAddress: 'http://localhost:4444/wd/hub',
+  // require feature files
   specs: [
-    './src/**/*.e2e-spec.ts'
+    './src/specs/*.feature' // accepts a glob
   ],
+  cucumberOpts: {
+    // require step definitions
+    require: [
+      './src/steps/*.steps.ts' // accepts a glob
+    ]
+  },
+  allScriptsTimeout: 11000,
   capabilities: {
     browserName: 'chrome'
   },
-  directConnect: true,
-  baseUrl: 'http://localhost:4200/',
-  framework: 'jasmine',
-  jasmineNodeOpts: {
-    showColors: true,
-    defaultTimeoutInterval: 30000,
-    print: function() {}
+  chromeOptions: {
+    // set chrome to fullscreen mode
+    args: [
+        '--start-maximized'
+    ]
   },
+  //directConnect: true,
+  baseUrl: 'http://localhost:4200/',
+  directConnect: true,
   onPrepare() {
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.json')
     });
-    jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
   }
 };

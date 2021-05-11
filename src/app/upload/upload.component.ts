@@ -15,7 +15,6 @@ export class UploadComponent {
 
   uploader:FileUploader;
   hasBaseDropZoneOver:boolean;
-  hasAnotherDropZoneOver:boolean;
   response:string;
   user: User;
 
@@ -48,10 +47,10 @@ export class UploadComponent {
     });
 
     this.uploader.onAfterAddingFile = (fileItem) => { 
+      // Remove message
+      this.alertService.clear();
       const fileName = fileItem.file.name;
       if (fileName.includes('.gltf') || fileName.includes('.glb')) {
-        // Remove error message
-        this.alertService.clear();
         // The upload and uploadAll buttons are hidden upon generating signed URLs
         // This is to avoid upload error whenthe buttons are clicked to early
         this.isButtonVisible = false;
@@ -76,18 +75,30 @@ export class UploadComponent {
     };
 
     this.hasBaseDropZoneOver = false;
-    this.hasAnotherDropZoneOver = false;
 
-    this.response = '';
+    this.uploader.onSuccessItem = (fileItem) => {
+      // Remove previous message
+      this.alertService.clear();
+      this.alertService.success('Upload successful');
+    };
 
-    this.uploader.response.subscribe( res => this.response = res );
+    this.uploader.onErrorItem = (fileItem) => {
+      // Remove previous message
+      this.alertService.clear();
+      this.alertService.error('Upload failed!');
+    };
+
+    /*
+    this.uploader.response.subscribe( 
+      res => {  
+        if (res.status === 200) {
+          this.alertService.success('Model(s) uploaded successfully');
+        }
+      });
+    */
   }
 
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
-  }
-
-  public fileOverAnother(e:any):void {
-    this.hasAnotherDropZoneOver = e;
   }
 }
