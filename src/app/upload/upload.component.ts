@@ -28,20 +28,7 @@ export class UploadComponent {
   ){
     this.user = this.accountService.userValue;
     this.uploader = new FileUploader({
-      //url: URL,
-      disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
-      formatDataFunctionIsAsync: true,
       method: 'PUT',
-      formatDataFunction: async (item) => {
-        return new Promise( (resolve, reject) => {
-          resolve({
-            name: item._file.name,
-            length: item._file.size,
-            contentType: item._file.type,
-            date: new Date()
-          });
-        });
-      }
     });
 
     this.uploader.onAfterAddingFile = (fileItem) => { 
