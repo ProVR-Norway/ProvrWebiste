@@ -32,8 +32,6 @@ export class UploadComponent {
       disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
       formatDataFunctionIsAsync: true,
       method: 'PUT',
-      headers: [{ name: 'Content-Type', value: 'application/octet-stream'}],
-      //allowedFileType: ['.gltf', '.glb', 'pdf'],
       formatDataFunction: async (item) => {
         return new Promise( (resolve, reject) => {
           resolve({
@@ -61,6 +59,11 @@ export class UploadComponent {
           .subscribe(
             data => {
               fileItem.url = data.signedURL;
+              if (fileName.includes('.gltf')) {
+                fileItem.headers = [{ name: 'Content-Type', value: 'model/gltf+json'}];
+              } else {
+                fileItem.headers = [{ name: 'Content-Type', value: 'model/gltf-binary'}];
+              }
               this.isButtonVisible = true;
               return {fileItem};
           }
