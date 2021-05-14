@@ -1,0 +1,8 @@
+[
+    {
+      "origin": ["https://vr-collaboration-room.ey.r.appspot.com", "http://localhost:4200"],
+      "method": ["PUT"],
+      "responseHeader": ["Content-Type"],
+      "maxAgeSeconds": 3600
+    }
+]
