@@ -6,7 +6,7 @@
 
 ## ❗️ Notice
 
-In local development the application must listen on port 4200. If not, the CORS policy on Google Cloud Storage for the bucket used must be updated.
+In local development the application must listen on port 4200. If not, the CORS policy on Google Cloud Storage for the bucket used must be updated. Make changes to the `cors-config.json` and type this command in the terminal `gsutil cors set cors-config.json gs://BUCKET_NAME` to update the policy.
 
 ## 🚀 Deployment
 
