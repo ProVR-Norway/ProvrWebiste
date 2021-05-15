@@ -19,3 +19,9 @@ It is automatically deployed each time a push is made to the master branch. We u
 When browsers comminicate with external servers they send a CORS preflight request in advance of the actual POST, GET or DELETE, etc. request. This policy needs to be configured explicitly on the bucket `user-cad-models` in Google Cloud Storage. This is the tutorial we used 👉 [CORS Config GCS](https://cloud.google.com/storage/docs/configuring-cors). 
 
 > The JSON file used to configure the CORS policy is found in this repository under the name `cors-config.json`.
+
+## 📚 Documentation
+
+The complete documentation of the website can be found here 👉 https://provr-norway.github.io
+
+
