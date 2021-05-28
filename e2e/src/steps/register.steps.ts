@@ -21,8 +21,8 @@ When('I enter the required details', async () => {
   const username = await element(by.name('username'));
   const password = await element(by.name('password'));
   // Insert example email, username and password
-  await email.sendKeys('ProtractorCucumber@test.com'); // Must set new email for each test. De-register user will come later to avoid this
-  await username.sendKeys('ProtractorCucumberUsername') // Must set new username for each test. De-register user will come later to avoid this
+  await email.sendKeys('ProtractorCucumber@test123.com'); // Must set new email for each test. De-register user will come later to avoid this
+  await username.sendKeys('ProtractorCucumberUsername123') // Must set new username for each test. De-register user will come later to avoid this
   await password.sendKeys('ProtractorCucumberPassword123@@');
   // Submit info
   await element(by.buttonText('Register')).click();

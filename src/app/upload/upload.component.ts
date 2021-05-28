@@ -29,6 +29,7 @@ export class UploadComponent {
     this.user = this.accountService.userValue;
     this.uploader = new FileUploader({
       method: 'PUT',
+      disableMultipart : true
     });
 
     this.uploader.onAfterAddingFile = (fileItem) => { 
